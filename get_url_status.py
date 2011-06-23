@@ -5,24 +5,15 @@ from urlparse import urlparse
 import csv
 import xlrd
 
-#url_list = ("www.employmentguide.com/help",
-#            "www.employmentguide.com/Office_jobs/apply.html",
-#            "www.employmentguide.com/browse_jobfairs.html",
-#            "www.employmentguide.com/Computer_jobs/apply.html",
-#            "www.employmentguide.com/EG/browse_jobs/DC/browsejobsnew.html")
-
-excel_file = sys.argv[1]
-
-"""Open the Excel file"""
-#wb = xlrd.open_workbook(excel_file)
-#sh = wb.sheet_by_index(0)
-
 def get_redirected_url(url):
     opener = urllib2.build_opener(urllib2.HTTPRedirectHandler)
     request = opener.open(url)
     return request.url
 
 if __name__ == '__main__':
+
+    excel_file = sys.argv[1]
+    
     """ Try and open the Excel file"""
     try:
         wb = xlrd.open_workbook(excel_file)
